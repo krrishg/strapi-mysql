@@ -25,6 +25,11 @@ jobs:
           node-version: '16'
 
       - uses: bahmutov/npm-install@v1
+      
+      - name: create env file
+        run: |
+          touch .env
+          echo BASE_URL=${{ secrets.BASE_URL }} >> .env
 
       - name: Build app
         run: cat .env && npm run build --production
